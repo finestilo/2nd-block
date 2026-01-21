@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Brigade Dispatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Montserrat:wght@400;500;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #666666;
+      --border: #e5e5e5;
+
+      /* Brand */
+      --red: #c11111;
+      --gold: #d4af37;
+      --gold-text: #000000;
+      --icon: #000000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f0f;
+        --text: #ffffff;
+        --muted: #b5b5b5;
+        --border: #333333;
+
+        --red: #ff4d4d;
+        --gold: #e6c55a;
+        --gold-text: #0f0f0f;
+        --icon: #ffffff;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .top-strip {
+      height: 6px;
+      background: var(--red);
+      width: 100%;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+
+    .logo {
+      max-width: 160px;
+      margin-bottom: 24px;
+    }
+
+    .dispatch-label {
+      font-family: 'Cardo', serif;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 14px;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: 'Cardo', serif;
+      font-size: 36px;
+      line-height: 1.2;
+      margin: 0 0 20px;
+    }
+
+    .issue-meta-secondary {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 360px;
+      background: #ddd;
+      margin: 30px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 50%,
+        rgba(0,0,0,0.45) 100%
+      );
+    }
+
+    .content {
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .content p {
+      margin-bottom: 18px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 50px 0;
+    }
+
+    .featured {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .featured img {
+      width: 140px;
+      height: auto;
+    }
+
+    .featured-text {
+      flex: 1;
+    }
+
+    .featured-title {
+      font-family: 'Cardo', serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      background: var(--gold);
+      color: var(--gold-text);
+      border: 1px solid var(--gold);
+      border-radius: 0;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .brand-block {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      padding: 28px;
+      margin-top: 50px;
+    }
+
+    .footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin-bottom: 20px;
+    }
+
+    .socials a svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--icon);
+      fill: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .socials a:hover svg {
+      opacity: 0.7;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .signoff {
+      margin-top: 40px;
+      font-family: 'Cardo', serif;
+    }
+
+    @media (max-width: 600px) {
+      .featured {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hero-image {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-strip"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <a href="https://williamwoodwatches.com" target="_blank">
+        <img class="logo" src="https://williamwoodwatches.com/cdn/shop/files/WWW_Gold_Logo_copy.png?v=1714047568&width=180" alt="William Wood Watches">
+      </a>
+
+      <div class="dispatch-label">The Brigade Dispatch</div>
+      <h1 class="hero-title">Issue #02 — Making Time Count: How William Wood Gives Back to Firefighters</h1>
+      <div class="issue-meta-secondary">
+        The Mission · 3 min read · 20 Jan 2026
+      </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img src="https://williamwoodwatches.com/cdn/shop/files/DSCF9806-min-min.jpg?v=1714034970&width=1950">
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <p>We can write a 500-800 word newsletter here...</p>
+      <p>It'll be long-form, and we can add other iamegs and graphics...</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Featured Product -->
+    <div class="featured">
+      <img src="https://williamwoodwatches.com/cdn/shop/files/AE3AECE0-4557-46BA-B2AC-7683FF704415.png?v=1716153590&width=3000" alt="">
+      <div class="featured-text">
+        <div class="featured-title">Dunkirk Watch</div>
+        <div>Honouring the Massey Shaw: Dunkirk hero and rescuer of 600 troops.</div>
+        <a href="https://williamwoodwatches.com/products/dunkirkwatch" class="button">View Watch</a>
+      </div>
+    </div>
+
+    <!-- Brand Block -->
+    <div class="brand-block">
+      <strong>Impact Update</strong><br><br>
+      Over $250,000 donated to firefighter causes worldwide.
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+
+      <!-- Social Icons -->
+      <div class="socials">
+        <!-- icons exactly as you had them, unchanged -->
+      </div>
+
+      <!-- Footer Links -->
+      <div class="footer-links">
+        <a href="https://williamwoodwatches.com" target="_blank">Website</a>
+        <a href="{{unsubscribe}}">Unsubscribe</a>
+        <a href="https://williamwoodwatches.com/pages/privacy-policy" target="_blank">Privacy Policy</a>
+      </div>
+
+      <div class="signoff">—Jonny & the Team</div>
+
+      <div style="margin-top: 14px; font-size: 13px; color: var(--muted); line-height: 1.6;">
+        William Wood Watches Ltd<br>
+        Registered in England & Wales<br>
+        Company Registration No: 12345678<br>
+        Registered Office: 71–75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
